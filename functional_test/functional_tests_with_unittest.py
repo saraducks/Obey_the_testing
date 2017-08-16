@@ -14,7 +14,7 @@ class NewVersionTest(unittest.TestCase):
       # get the chrome execution path
       self.browser.get("http://localhost:8000")
       # assertio if the title is same as page title
-      self.assertIn('TO-DO', self.browser.title)
+      self.assertIn('TO-DO lists', self.browser.title)
       self.fail('Finish the test')
       # to do lists
 
