@@ -16,7 +16,7 @@ class NewVersionTest(unittest.TestCase):
       # get the chrome execution path
       self.browser.get("http://localhost:8000")
       # assertIn if the title is same as page title
-      self.assertIn('TO-DO', self.browser.title)
+      self.assertIn('TO-DO lists', self.browser.title)
       
       # get the text of <h1>
       header_text = self.browser.find_element_by_tag_name('h1').text
@@ -28,12 +28,12 @@ class NewVersionTest(unittest.TestCase):
       self.assertEqual(input_box.get_attribute('placeholder'), 'Enter a to-do item')
       input_box.send_keys('Buy my Tesla X model')
       
-      input_box.send_keys(keys.ENTER)
+      input_box.send_keys(Keys.ENTER)
       time.sleep(1)
       
       table = self.browser.find_element_by_id('id_list_table')
       rows = table.find_elements_by_tag_name('tr')
-      self.assertTrue(any(row.text == '1.Buy my Tesla X model' for row in rows))
+      self.assertTrue(any(row.text == '1.Buy my Tesla X model' for row in rows), "New to-do item did not appear in table")
       
       self.fail('Finish the test')
       # to do lists
