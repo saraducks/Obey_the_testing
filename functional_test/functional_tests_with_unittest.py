@@ -29,13 +29,17 @@ class NewVersionTest(unittest.TestCase):
       input_box.send_keys('Buy my Tesla X model')
       
       input_box.send_keys(Keys.ENTER)
+      input_box = self.browser.find_element_by_id('input_text_item') 
+      input_box.send_keys('Use peacock feathers to make a fly')
+      input_box.send_keys(Keys.ENTER)
+
       time.sleep(1)
       
       table = self.browser.find_element_by_id('id_list_table')
       rows = table.find_elements_by_tag_name('tr')
-      self.assertTrue(any(row.text == '1.Buy my Tesla X model' for row in rows), "New to-do item did not appear in table")
-      
-      self.fail('Finish the test')
+      self.assertIn('1:Buy my Tesla X model',[row.text for row in rows])
+      self.assertIn('2:Use peacock feathers to make a fly',[row.text for row in rows])
+      #self.fail('Finish the test')
       # to do lists
 
 if __name__ == '__main__':
