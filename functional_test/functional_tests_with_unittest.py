@@ -16,12 +16,12 @@ class NewVersionTest(unittest.TestCase):
       # get the chrome execution path
       self.browser.get("http://localhost:8000")
       # assertIn if the title is same as page title
-      #self.assertIn('TO-DO lists', self.browser.title)
+      self.assertIn('TO-DO', self.browser.title)
       
       # get the text of <h1>
       header_text = self.browser.find_element_by_tag_name('h1').text
       # assertIn if the header_text is same as 'TO-DO lists'
-      self.assertIn('TO-DO lists', header_text)
+      self.assertIn('TO-DO', header_text)
 
       # test the input_box 
       input_box = self.browser.find_element_by_id('input_text_item')
